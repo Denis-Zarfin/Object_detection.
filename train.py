@@ -3,7 +3,7 @@ import os
 
 os.environ['PYTHONHASHSEED'] = str(seed)
 import tensorflow as tf
-import numpy as npg
+import numpy as np
 import random
 
 tf.random.set_seed(seed)
