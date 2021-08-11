@@ -61,10 +61,10 @@ path_of_w = r"C:\Users\Denis\Documents\ObjectDetection\res10\res10_300x300_ssd_i
 facedetection = cv2.dnn.readNet(path_of_pr, path_of_w)
 maskdetection = load_model("detection.model")
 
-videostrim = VideoStream(src=0).start()
+videostream = VideoStream(src=0).start()
 
 while True:
-    videoframe = videostrim.read()
+    videoframe = videostream.read()
     videoframe = imutils.resize(videoframe, width=700)
     (locations, predictions) = detector(videoframe, facedetection, maskdetection)
 
@@ -83,4 +83,4 @@ while True:
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
 cv2.destroyAllWindows()
-videostrim.stop()
+videostream.stop()
