@@ -53,8 +53,8 @@ tags = np.array(tags)
 augmentation = ImageDataGenerator(
     rotation_range=40,
     zoom_range=0.3,
-    width_shift_range=0.3,
-    height_shift_range=0.3,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
     shear_range=0.2,
     horizontal_flip=True,
     fill_mode="nearest"
@@ -65,7 +65,7 @@ headModel = trailModel.output
 headModel = AveragePooling2D(pool_size=(7, 7))(headModel)
 headModel = Flatten(name="flatten")(headModel)
 headModel = Dense(128, activation='relu')(headModel)
-headModel = Dropout(0.55)(headModel)
+headModel = Dropout(0.5)(headModel)
 headModel = Dense(2, activation="softmax")(headModel)
 
 model = Model(inputs=trailModel.input, outputs=headModel)

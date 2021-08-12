@@ -71,7 +71,6 @@ while True:
     for (case, preds) in zip(locations, predictions):
         (x_start, y_start, x_end, y_end) = case
         (mask, not_mask) = preds
-
         tag = "MASK" if mask > not_mask else "NO MASK"
         maskcolor = (0, 255, 0) if tag == "MASK" else (0, 0, 255)
         tag = "{}: {:.2f}%".format(tag, max(mask, not_mask) * 100)
@@ -82,5 +81,6 @@ while True:
     cv2.imshow("result", videoframe)
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
+
 cv2.destroyAllWindows()
 videostream.stop()
